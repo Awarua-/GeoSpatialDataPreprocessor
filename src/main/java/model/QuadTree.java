@@ -3,23 +3,23 @@ package model;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-public class KDTree {
+public class QuadTree {
 
     private List<Quadrant> quadrants;
     private int treeDepth;
     private OffsetDateTime startDate;
     private OffsetDateTime endDate;
 
-    public KDTree(List<Quadrant> quadrants, int depth) {
+    public QuadTree(List<Quadrant> quadrants, int depth) {
         this.quadrants = quadrants;
         this.treeDepth = depth;
     }
 
-    public List<Quadrant> getQuadrants() {
+    List<Quadrant> getQuadrants() {
         return quadrants;
     }
 
-    public int getTreeDepth() {
+    int getTreeDepth() {
         return treeDepth;
     }
 
@@ -31,11 +31,11 @@ public class KDTree {
         this.endDate = endDate;
     }
 
-    public OffsetDateTime getStartDate() {
+    OffsetDateTime getStartDate() {
         return startDate;
     }
 
-    public OffsetDateTime getEndDate() {
+    OffsetDateTime getEndDate() {
         return endDate;
     }
 }

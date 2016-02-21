@@ -1,24 +1,29 @@
 package model;
 
-import com.google.gson.*;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 
 import java.lang.reflect.Type;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 
-public class KDTreeSerializer implements JsonSerializer<KDTree> {
+public class QuadTreeSerializer implements JsonSerializer<QuadTree> {
     @Override
-    public JsonElement serialize(KDTree kdTree, Type type, JsonSerializationContext jsonSerializationContext) {
+    public JsonElement serialize(QuadTree kdTree, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject jsonQuadrants = new JsonObject();
         DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
         jsonQuadrants.addProperty("maxDepth", kdTree.getTreeDepth());
         OffsetDateTime startDate = kdTree.getStartDate();
+        OffsetDateTime endDate = kdTree.getEndDate();
         if (startDate != null) {
             jsonQuadrants.addProperty("startDate", startDate.format(formatter));
         }
-        jsonQuadrants.addProperty("endDate", kdTree.getEndDate().format(formatter));
+        if (endDate != null) {
+            jsonQuadrants.addProperty("endDate", endDate.format(formatter));
+        }
         for (Quadrant quadrant : kdTree.getQuadrants()) {
             final JsonObject jsonObject = new JsonObject();
             JsonObject coordinate = new JsonObject();

@@ -9,10 +9,7 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.nio.file.Files;
-import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -67,7 +64,7 @@ public class CSVLoader extends FileLoader {
                 }
             }
 
-        } catch (IOException e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
     }
@@ -91,7 +88,8 @@ public class CSVLoader extends FileLoader {
                 reader.close();
                 finished = true;
             }
-        } catch (IOException e) {
+        } catch (Throwable e) {
+            e.printStackTrace();
             errorCallback.callback("Failed to read file", e);
             tempLine = null;
             finished = true;

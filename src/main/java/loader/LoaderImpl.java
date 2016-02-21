@@ -77,10 +77,12 @@ public class LoaderImpl implements Loader {
 
     @Override
     public void run() {
+        System.out.println("reading from file");
         while (!loader.isFinished()) {
             Point point = loader.readFileLine();
             points.add(point);
         }
+        System.out.println("done reading");
         callback.calculate();
     }
 }

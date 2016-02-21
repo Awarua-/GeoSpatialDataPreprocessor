@@ -17,19 +17,19 @@ public class Quadrant implements Comparable<Quadrant> {
         this.radius = radius;
     }
 
-    public BigInteger getId() {
+    BigInteger getId() {
         return id;
     }
 
-    public Collection<Point> getPoints() {
+    Collection<Point> getPoints() {
         return points;
     }
 
-    public Double getRadius() {
+    Double getRadius() {
         return radius;
     }
 
-    public Coordinate getOrigin() {
+    Coordinate getOrigin() {
         return origin;
     }
 

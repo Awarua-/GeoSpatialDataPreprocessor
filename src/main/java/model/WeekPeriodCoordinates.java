@@ -1,15 +1,9 @@
 package model;
 
-import model.Point;
-
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-/**
- * Created by wooll on 02-Jan-16.
- */
 public class WeekPeriodCoordinates {
 
     private OffsetDateTime beginningOfWeek;
@@ -22,8 +16,10 @@ public class WeekPeriodCoordinates {
         this.addPoint(point);
     }
 
-    public WeekPeriodCoordinates() {
-
+    public WeekPeriodCoordinates(List<Point> points) {
+        this.points = points;
+        this.beginningOfWeek = points.get(0).getDate();
+        this.endOfWeek = points.get(points.size() -1).getDate();
     }
 
     public void addPoint(Point point) {
@@ -39,9 +35,7 @@ public class WeekPeriodCoordinates {
         return endOfWeek;
     }
 
-
-    //// FIXME: 03-Jan-16 might be a good candidate for an unmodifiable list
     public List<Point> getPoints() {
-        return points;
+        return new ArrayList<>(points);
     }
 }
